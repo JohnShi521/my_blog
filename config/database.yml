@@ -13,20 +13,25 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
 
 development:
-  <<: *default
-  database: my_blog_development
+    <<: *default
+    host: <%= ENV["host"] %>
+    port: <%= ENV["port"] %>
+    database: <%= ENV["database"] %>
+    username: <%= ENV["username"] %>
+    password: <%= ENV['password'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: my_blog_test
+    <<: *default
+    host: <%= ENV["host"] %>
+    port: <%= ENV["port"] %>
+    database: <%= ENV["database"] %>
+    username: <%= ENV["username"] %>
+    password: <%= ENV['password'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -48,7 +53,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: my_blog_production
-  username: my_blog
-  password: <%= ENV['MY_BLOG_DATABASE_PASSWORD'] %>
+    <<: *default
+    host: <%= ENV["host"] %>
+    port: <%= ENV["port"] %>
+    database: <%= ENV["database"] %>
+    username: <%= ENV["username"] %>
+    password: <%= ENV['password'] %>
