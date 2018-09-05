@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.com'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.2'
@@ -60,3 +60,19 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+# 分页
+gem 'kaminari'
+
+# easy config
+gem 'figaro'
+
+# model 注释
+gem 'annotate'
+
+# 用户系统
+gem 'devise'
+
+# 文件上传工具
+gem 'carrierwave'
