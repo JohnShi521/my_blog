@@ -1,3 +1,18 @@
+.navbar-bg {
+     background-color: #5bc0de;
+ }
+
+.navbar-default .text-blog {
+    text-decoration: none;
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #2aabd2;
+}
+
+
 body,
 h1,
 li {
@@ -37,6 +52,7 @@ a:hover {
 
 .navbar>.container .logo {
     line-height: 60px;
+    margin: 0 auto;
 }
 
 .navbar>.container .logo a {
@@ -45,6 +61,15 @@ a:hover {
 
 .navbar-default {
     background-color: #fff;
+}
+
+.navbar>.container .navbar-header {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.navbar>.container .navbar-header button {
+    margin-top: 15px;
 }
 
 .navbar-nav>li>a {
@@ -66,7 +91,6 @@ a:hover {
 .content {
     position: relative;
     min-height: 500px;
-    margin-right: 320px;
     margin-bottom: 20px;
     float: left;
 }
@@ -119,7 +143,7 @@ a:hover {
 .excerpt {
     clear: both;
     border: 1px solid #fff;
-    padding: 10px;
+    padding: 10px 0px;
     overflow: hidden;
     background-color: #fff;
     margin-bottom: -1px;
@@ -225,9 +249,7 @@ a:hover {
 
 .sidebar {
     float: left;
-    margin-left: -300px;
-    width: 300px;
-    position: relative;
+    margin-left: 25px;
 }
 
 .widget {

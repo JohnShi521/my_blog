@@ -76,3 +76,5 @@ gem 'devise'
 
 # 文件上传工具
 gem 'carrierwave'
+
+
