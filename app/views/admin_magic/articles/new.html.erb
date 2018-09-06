@@ -1,0 +1,150 @@
+<%= render("admin_magic/layout_share/header") %>
+
+
+<div class="admin">
+  <!--<div class="am-g">-->
+  <!-- ========== Left Sidebar Start ========== -->
+  <!--<div class="left side-menu am-hide-sm-only am-u-md-1 am-padding-0">
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 548px;">
+      <div class="sidebar-inner slimscrollleft" style="overflow: hidden; width: auto; height: 548px;">-->
+  <%= render("admin_magic/layout_share/left_sidebar") %>
+
+  <!--</div>
+</div>
+</div>-->
+  <!-- ========== Left Sidebar end ========== -->
+
+
+
+  <!--	<div class="am-g">-->
+  <!-- ============================================================== -->
+  <!-- Start right Content here -->
+  <div class="content-page">
+    <div class="content">
+      <div class="am-g">
+        <!-- Row start -->
+        <div class="am-u-sm-12">
+          <div class="card-box">
+
+            <h4 class="header-title m-t-0 m-b-30">写文章</h4>
+
+            <div class="am-g">
+              <div class="am-u-md-12">
+                <form class="am-form am-text-sm" >
+                  <div class="am-form-group">
+                    <div class="am-g">
+                      <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ipt-text-1">标题</label>
+                      <input class="am-u-md-8 form-control"  id="doc-ipt-text-1" placeholder="输入标题信息">
+                    </div>
+                  </div>
+
+                  <div class="am-form-group">
+                    <div class="am-g">
+                      <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ipt-email-1">电子邮箱</label>
+                      <input class="am-u-md-8 form-control"  id="doc-ipt-email-1" placeholder="输入电子邮件">
+                    </div>
+                  </div>
+
+                  <div class="am-form-group">
+                    <div class="am-g">
+                      <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ipt-pwd-1">密码</label>
+                      <input type="password" class="am-u-md-8"   id="doc-ipt-pwd-1" placeholder="设置个密码吧">
+                    </div>
+                  </div>
+
+                  <div class="am-form-group">
+                    <div class="am-g">
+                      <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ipt-phd-1">提示</label>
+                      <input class="am-u-md-8 form-control"  id="doc-ipt-phd-1" placeholder="提示信息">
+                    </div>
+                  </div>
+
+                  <div class="am-form-group">
+                    <div class="am-g">
+                      <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ta-1">文本域</label>
+                      <div class="" id="test-editormd">
+                <textarea style="display:none;">[TOC]
+
+#### Disabled options
+
+- TeX (Based on KaTeX);
+- Emoji;
+- Task lists;
+- HTML tags decode;
+- Flowchart and Sequence Diagram;
+
+#### Editor.md directory
+
+    editor.md/
+            lib/
+            css/
+            scss/
+            tests/
+            fonts/
+            images/
+            plugins/
+            examples/
+            languages/
+            editormd.js
+            ...
+
+```html
+&lt;!-- English --&gt;
+&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
+
+&lt;!-- 繁體中文 --&gt;
+&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
+```
+</textarea>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+        <!-- Row end -->
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+</div>
+<!-- end right Content here -->
+<!--</div>-->
+</div>
+</div>
+
+
+<a href="admin-offcanvas" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"><!--<i class="fa fa-bars" aria-hidden="true"></i>--></a>
+<% content_for :extro_scripts do %>
+<script type="text/javascript">
+    var testEditor;
+
+    $(function() {
+        testEditor = editormd("test-editormd", {
+            width   : "91.6%",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "../lib/"
+        });
+
+        /*
+        // or
+        testEditor = editormd({
+            id      : "test-editormd",
+            width   : "90%",
+            height  : 640,
+            path    : "../lib/"
+        });
+        */
+    });
+</script>
+<% end %>

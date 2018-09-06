@@ -1,0 +1,2 @@
+module AdminMagic::CategoriesHelper
+end
