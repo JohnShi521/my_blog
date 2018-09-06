@@ -2073,6 +2073,7 @@ th {
 .am-table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 1px solid #ddd;
+  text-align: center;
 }
 .am-table > caption + thead > tr:first-child > th,
 .am-table > colgroup + thead > tr:first-child > th,
