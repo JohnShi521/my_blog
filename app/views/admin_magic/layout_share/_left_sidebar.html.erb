@@ -4,7 +4,7 @@
     <!-- User -->
     <div class="user-box am-hide-sm-only">
       <div class="user-img">
-        <%= image_tag("avatar-4.jpg",class: "img-circle img-thumbnail img-responsive",title:"hehui") %>
+        <%= image_tag("avatar-4.jpg",class: "img-circle img-thumbnail img-responsive",title:"#{current_user.try(:nickname)}") %>
         <div class="user-status offline"><i class="am-icon-dot-circle-o" aria-hidden="true"></i></div>
       </div>
       <h5><a href="#"><%= current_user.try(:nickname) %></a> </h5>
