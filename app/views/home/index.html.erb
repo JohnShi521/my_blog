@@ -31,7 +31,7 @@
                 <% end %>
               </h2>
             </header>
-            <p><%= art.try(:content) %></p>
+            <p><%= art.try(:short_content) %></p>
             <p class="meta">
               <a class="time" href="#"><i class="glyphicon glyphicon-time"></i> <%= art.create_time.strftime("%Y-%m-%d") %></a>
               <a class="views" href="#"><i class="glyphicon glyphicon-eye-open"></i> 0</a>

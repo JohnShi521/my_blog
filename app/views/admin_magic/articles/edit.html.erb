@@ -40,6 +40,13 @@
 
                   <div class="am-form-group">
                     <div class="am-g">
+                      <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ipt-text-1">副标题</label>
+                      <input class="am-u-md-11 form-control" name="article[short_content]" value="<%= @article.try(:short_content) %>" id="doc-ipt-text-1" placeholder="输入副标题" required>
+                    </div>
+                  </div>
+
+                  <div class="am-form-group">
+                    <div class="am-g">
                       <label class="am-u-md-1 am-md-text-right" for="doc-select-1">来源</label>
                       <select name="article[source_type]" id="doc-select-1" required>
                         <% Article::SourceTypes.each do |k,v| %>

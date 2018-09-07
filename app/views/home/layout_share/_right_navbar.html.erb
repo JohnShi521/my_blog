@@ -30,13 +30,14 @@
       <% end %>
     </ul>
   </div>
-  <div class="widget">
+  <div class="widget widget_category">
     <h3>归档</h3>
-<!--    <ul>-->
-<!--      <li><a><span class="text"><i class="glyphicon glyphicon-play-circle"></i> 2018年3月</span></a></li>-->
-<!--      <li><a><span class="text"><i class="glyphicon glyphicon-play-circle"></i> 2018年3月</span></a></li>-->
-<!--      <li><a><span class="text"><i class="glyphicon glyphicon-play-circle"></i> 2018年3月</span></a></li>-->
-<!--    </ul>-->
+    <ul>
+      <% @time_file.each do |k,v| %>
+        <li><a href="#"><span class="text"> <%= k.strftime("%Y年%m月") %></span><span class="count" style="margin-left: 150px"><%= v.size %>篇</span></a></li>
+      <% end %>
+
+    </ul>
   </div>
   <div class="widget widget_sentence">
     <h3>标签云</h3>
