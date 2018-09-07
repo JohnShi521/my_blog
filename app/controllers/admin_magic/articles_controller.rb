@@ -1,6 +1,6 @@
 class AdminMagic::ArticlesController < AdminMagic::BaseController
 
-  before_action :find_article, only:[:show,:edit,:update,:destroy]
+  before_action :find_article, only:[:show,:edit,:update,:destroy,:verify,:hide]
 
   def index
     @articles = Article.all
@@ -59,6 +59,26 @@ class AdminMagic::ArticlesController < AdminMagic::BaseController
       flash[:success] = "删除成功"
     else
       flash[:error] = "删除失败"
+    end
+  end
+
+  def verify
+    @article.status = "verify"
+    if @article.save
+      redirect_to admin_magic_articles_path
+      flash[:success] = "审核成功"
+    else
+      flash[:error] = "审核失败"
+    end
+  end
+
+  def hide
+    @article.status = "hide"
+    if @article.save
+      redirect_to admin_magic_articles_path
+      flash[:success] = "隐藏成功"
+    else
+      flash[:error] = "隐藏失败"
     end
   end
 

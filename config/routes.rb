@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   namespace :admin_magic do
     root "articles#index"
     resources :articles do
-
+      member do
+        get "verify"
+        get "hide"
+      end
     end
 
     resources :categories do

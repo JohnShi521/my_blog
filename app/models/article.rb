@@ -43,7 +43,7 @@ class Article < ApplicationRecord
   enum status:{
       created: 0,
       verify: 1,
-      deleted: 2
+      hide: 2
   }
 
 end

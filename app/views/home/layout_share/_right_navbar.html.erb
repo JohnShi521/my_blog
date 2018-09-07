@@ -2,50 +2,32 @@
   <div class="widget widget_hot">
     <h3>最新文章</h3>
     <ul>
-<!--      <li>-->
-<!--        <a title="" href="#">-->
-<!--          <span class="text">用如何绘制产品架构图</span>-->
-<!--          <span class="muted">-->
-<!--                    <i class="glyphicon glyphicon-time"></i>-->
-<!--                    2016-11-01-->
-<!--                </span>-->
-<!--          <span class="muted">-->
-<!--                    <i class="glyphicon glyphicon-eye-open"></i> 88-->
-<!--                </span>-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li>-->
-<!--        <a title="" href="#">-->
-<!--          <span class="text">用如何绘制产品架构图</span>-->
-<!--          <span class="muted">-->
-<!--                    <i class="glyphicon glyphicon-time"></i>-->
-<!--                    2016-11-01-->
-<!--                </span>-->
-<!--          <span class="muted">-->
-<!--                    <i class="glyphicon glyphicon-eye-open"></i> 88-->
-<!--                </span>-->
-<!--        </a>-->
-<!--      </li>-->
-<!--      <li>-->
-<!--        <a title="" href="#">-->
-<!--          <span class="text">用如何绘制产品架构图</span>-->
-<!--          <span class="muted">-->
-<!--                    <i class="glyphicon glyphicon-time"></i>-->
-<!--                    2016-11-01-->
-<!--                </span>-->
-<!--          <span class="muted">-->
-<!--                    <i class="glyphicon glyphicon-eye-open"></i> 88-->
-<!--                </span>-->
-<!--        </a>-->
-<!--      </li>-->
+      <% unless @new_articles.blank? %>
+        <% @new_articles.each do |art| %>
+          <li>
+            <a title="" href="#">
+              <span class="text"><%= art.title %></span>
+              <span class="muted">
+                        <i class="glyphicon glyphicon-time"></i>
+                        <%= art.create_time.strftime("%Y-%m-%d") %>
+                    </span>
+              <span class="muted">
+                        <i class="glyphicon glyphicon-eye-open"></i> 0
+                    </span>
+            </a>
+          </li>
+        <% end %>
+      <% else %>
+      <% end %>
 
     </ul>
   </div>
   <div class="widget widget_category">
     <h3>文章分类</h3>
     <ul>
-<!--      <li><a href="#"><span class="text"><i class="glyphicon glyphicon-triangle-right"></i> 类目一</span><span class="count">1篇</span></a></li>-->
-<!--      <li><a href="#"><span class="text"><i class="glyphicon glyphicon-triangle-right"></i> 类目一</span><span class="count">1篇</span></a></li>-->
+      <% @categories.each do |cate| %>
+        <li><a href="#"><span class="text"> <%=cate.try(:name) %></span><span class="count" style="margin-left: 150px"><%= cate.articles.is_show_home.size %>篇</span></a></li>
+      <% end %>
     </ul>
   </div>
   <div class="widget">
@@ -58,12 +40,10 @@
   </div>
   <div class="widget widget_sentence">
     <h3>标签云</h3>
-<!--    <ul>-->
-<!--      <li><a href="#">移动 <span class="badge">1</span></a></li>-->
-<!--      <li><a href="#">产品 <span class="badge">1</span></a></li>-->
-<!--      <li><a href="#">移动统计 <span class="badge">1</span></a></li>-->
-<!--      <li><a href="#">移动统计 <span class="badge">1</span></a></li>-->
-<!--      <li><a href="#">移动统计 <span class="badge">1</span></a></li>-->
-<!--    </ul>-->
+    <ul>
+      <% @tags.each do |tag| %>
+        <li><a href="#"><%= tag.try(:name) %> <span class="badge"><%= tag.articles.is_show_home.size %></span></a></li>
+      <% end %>
+    </ul>
   </div>
 </div>

@@ -94,12 +94,12 @@
                           <%= link_to edit_admin_magic_article_path(art) do %>
                             <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
                           <% end %>
-                          <a href="">
+                          <%= link_to verify_admin_magic_article_path(art) do %>
                             <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
-                          </a>
-                          <a href="">
+                          <% end %>
+                          <%= link_to hide_admin_magic_article_path(art) do %>
                             <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 隐藏</button>
-                          </a>
+                          <% end %>
                           <%= link_to admin_magic_article_path(art), method: :DELETE do %>
                             <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
                           <% end %>
