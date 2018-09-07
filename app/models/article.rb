@@ -10,19 +10,29 @@
 #  create_time       :datetime
 #  user_id           :integer
 #  category_id       :integer
-#  status            :integer          default(0)
+#  status            :integer          default("created")
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  source_type       :integer
 #
 
 class Article < ApplicationRecord
+  belongs_to :user
+  belongs_to :category
+  has_many :article_tags
+  has_many :tags, through: :article_tags
 
   scope :is_show_home, -> {where(status:1)}
 
   Types = {
       "Articles::Technical" => '技术分享',
       "Articles::Life" => '生活杂谈'
+  }
+
+
+  SourceTypes = {
+      "original" => '原创',
+      "reprint" => '转载'
   }
 
   enum source_type:{
@@ -33,6 +43,7 @@ class Article < ApplicationRecord
   enum status:{
       created: 0,
       verify: 1,
-      delete: 2
+      deleted: 2
   }
+
 end

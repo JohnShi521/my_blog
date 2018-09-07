@@ -28,8 +28,9 @@
           <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
               <div class="am-btn-group am-btn-group-xs">
-                <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
-                <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
+                <%= link_to new_admin_magic_article_path,class:"am-btn am-btn-default" do %>
+                  <span class="am-icon-plus"></span> 新增
+                <% end %>
                 <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
                 <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
               </div>
@@ -61,55 +62,55 @@
                   <th class="table-type">所属分类</th>
                   <th>标签</th>
                   <th class="table-author am-hide-sm-only">作者</th>
+                  <th>状态</th>
                   <th class="table-date am-hide-sm-only">最后一次修改时间</th>
                   <th class="table-set">操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td><input type="checkbox" /></td>
-                  <td>1</td>
-                  <td>技术分享</td>
-                  <td><a href="#">文章标题</a></td>
-                  <td>分类</td>
-                  <td>标签</td>
-                  <td>作者</td>
-                  <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
-                  <td>
-                    <div class="am-btn-toolbar">
-                      <div class="am-btn-group am-btn-group-xs">
-                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
-                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 隐藏</button>
-                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                <% @articles.each do |art| %>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td><%= art.id %></td>
+                    <td><%= art.type_name %></td>
+                    <td><a href="#"><%= art.try(:title) %></a></td>
+                    <td><%= art.category.try(:name) if art.category.present? %></td>
+                    <td><%= art.tags.collect{|x|x.name}.join(", ") %></td>
+                    <td><%= art.user.try(:nickname) if art.user.present? %></td>
+                    <td>
+                      <% case art.status %>
+                      <% when "created" %>
+                          待审核
+                      <% when "verify" %>
+                          已审核
+                      <% else %>
+                          已隐藏
+                      <% end %>
+                    </td>
+                    <td class="am-hide-sm-only"><%= art.updated_at.strftime("%Y-%m-%d %H:%M:%S")%></td>
+                    <td>
+                      <div class="am-btn-toolbar">
+                        <div class="am-btn-group am-btn-group-xs">
+                          <%= link_to edit_admin_magic_article_path(art) do %>
+                            <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                          <% end %>
+                          <a href="">
+                            <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
+                          </a>
+                          <a href="">
+                            <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 隐藏</button>
+                          </a>
+                          <%= link_to admin_magic_article_path(art), method: :DELETE do %>
+                            <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                          <% end %>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><input type="checkbox" /></td>
-                  <td>1</td>
-                  <td>技术分享</td>
-                  <td><a href="#">文章标题</a></td>
-                  <td>分类</td>
-                  <td>标签</td>
-                  <td>作者</td>
-                  <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
-                  <td>
-                    <div class="am-btn-toolbar">
-                      <div class="am-btn-group am-btn-group-xs">
-                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 审核</button>
-                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 隐藏</button>
-                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
+                <% end %>
                 </tbody>
               </table>
               <div class="am-cf">
-                共 15 条记录
                 <div class="am-fr">
                   <ul class="am-pagination">
                     <li class="am-disabled"><a href="#">«</a></li>
@@ -123,7 +124,7 @@
                 </div>
               </div>
               <hr />
-              <p>注：.....</p>
+              <p style="line-height: 100px">注：只有审核通过文章的才能展示在首页</p>
             </form>
           </div>
 

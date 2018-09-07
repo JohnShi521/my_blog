@@ -10,12 +10,15 @@
 #  create_time       :datetime
 #  user_id           :integer
 #  category_id       :integer
-#  status            :integer          default(0)
+#  status            :integer          default("created")
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  source_type       :integer
 #
 
 class Articles::Technical < Article
+  def type_name
+    "技术分享"
+  end
 
 end

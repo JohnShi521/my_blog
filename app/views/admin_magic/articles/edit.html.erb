@@ -26,15 +26,15 @@
         <div class="am-u-sm-12">
           <div class="card-box">
 
-            <h4 class="header-title m-t-0 m-b-30">写文章</h4>
+            <h4 class="header-title m-t-0 m-b-30">编辑文章</h4>
 
             <div class="am-g">
               <div class="am-u-md-12">
-                <%= form_with url:admin_magic_articles_path, model: Article.new, html:{class:"am-form am-text-sm"} do |f| %>
+                <%= form_with url:admin_magic_article_path, model: @article, html:{class:"am-form am-text-sm"} do |f| %>
                   <div class="am-form-group">
                     <div class="am-g">
                       <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ipt-text-1">标题</label>
-                      <input class="am-u-md-11 form-control" name="article[title]" id="doc-ipt-text-1" placeholder="输入标题" required>
+                      <input class="am-u-md-11 form-control" name="article[title]" value="<%= @article.try(:title) %>" id="doc-ipt-text-1" placeholder="输入标题" required>
                     </div>
                   </div>
 
@@ -43,7 +43,7 @@
                       <label class="am-u-md-1 am-md-text-right" for="doc-select-1">来源</label>
                       <select name="article[source_type]" id="doc-select-1" required>
                         <% Article::SourceTypes.each do |k,v| %>
-                          <option value="<%= k %>"><%= v %></option>
+                          <option value="<%= k %>" <%= @article.source_type == k ? "selected" : "" %>><%= v %></option>
                         <% end %>
                       </select>
                       <span class="am-form-caret"></span>
@@ -56,7 +56,7 @@
                       <div class="am-u-md-11 am-padding-0">
                         <select multiple class="" name="article[type]" id="doc-select-2" required>
                           <% Article::Types.each do |k,v| %>
-                            <option value="<%= k %>"><%= v %></option>
+                            <option value="<%= k %>" <%= @article.type == k ? "selected" : "" %>><%= v %></option>
                           <% end %>
                         </select>
                       </div>
@@ -68,7 +68,7 @@
                       <label class="am-u-md-1 am-md-text-right" for="doc-select-1">分类</label>
                       <select name="article[category_id]" id="doc-select-1" required>
                         <% Category.all.each do |cate| %>
-                          <option value="<%= cate.id %>"><%= cate.try(:name) %></option>
+                          <option value="<%= cate.id %>" <%= @article.category_id == cate.id ? "selected" : "" %>><%= cate.try(:name) %></option>
                         <% end %>
                       </select>
                       <span class="am-form-caret"></span>
@@ -76,10 +76,10 @@
                   </div>
 
                   <div class="am-form-group">
-                    <label class="am-u-md-1 am-md-text-right am-padding-left-0" style="margin-left: -15px">标签</label>
+                    <label class="am-u-md-1 am-md-text-right">标签：</label>
                     <% Tag.all.each do |tag| %>
                       <label class="am-checkbox-inline">
-                        <input type="checkbox" value="<%= tag.id %>" name="tag_ids[]"> <%= tag.try(:name) %>
+                        <input type="checkbox" value="<%= tag.id %>" name="tag_ids[]" <%= @article.tags.ids.include?(tag.id)? "checked" : "" %>> <%= tag.try(:name) %>
                       </label>
                     <% end%>
                   </div>
@@ -88,7 +88,7 @@
                     <div class="am-g">
                       <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ta-1">内容</label>
                       <div class="" id="test-editormd">
-                          <textarea style="display:none;" name="article[content]">*开始你的写作吧*</textarea>
+                          <textarea style="display:none;" name="article[content]"><%= @article.try(:content).html_safe %></textarea>
                       </div>
                     </div>
                   </div>
@@ -128,7 +128,7 @@
             width   : "91.6%",
             height  : 640,
             syncScrolling : "single",
-            path    : "../lib/"
+            path    : "../../lib/"
         });
 
         /*
