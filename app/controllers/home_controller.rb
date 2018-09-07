@@ -2,14 +2,14 @@ class HomeController < ApplicationController
   layout("home_application")
   before_action :pre_find
   def index
-    @articles =Article.is_show_home
+    @articles =Article.is_show_home.order("created_at desc")
     case params[:type]
     when "technical"
-      @articles = @articles.where(type:"Articles::Technical")
+      @articles = @articles.where(type:"Articles::Technical").page(params[:page]).per(10)
     when "life"
-      @articles = @articles.where(type:"Articles::Life")
+      @articles = @articles.where(type:"Articles::Life").page(params[:page]).per(10)
     else
-      @articles = @articles
+      @articles = @articles.page(params[:page]).per(10)
     end
 
   end

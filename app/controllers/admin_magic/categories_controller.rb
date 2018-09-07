@@ -2,7 +2,7 @@ class AdminMagic::CategoriesController < AdminMagic::BaseController
   before_action :find_category, only:[:show,:edit,:update,:destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.all.page(params[:page]).per(10)
 
     # 如果有分页
     # @all = @all.page(params[:page]).per(page_count)

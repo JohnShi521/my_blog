@@ -3,7 +3,7 @@ class AdminMagic::ArticlesController < AdminMagic::BaseController
   before_action :find_article, only:[:show,:edit,:update,:destroy,:verify,:hide]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.page(params[:page]).per(10)
 
     # 如果有分页
     # @all = @all.page(params[:page]).per(page_count)

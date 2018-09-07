@@ -2,7 +2,7 @@ class AdminMagic::TagsController < AdminMagic::BaseController
   before_action :find_tag, only:[:show,:edit,:update,:destroy]
 
   def index
-    @tags = Tag.all
+    @tags = Tag.all.page(params[:page]).per(10)
 
     # 如果有分页
     # @all = @all.page(params[:page]).per(page_count)
