@@ -11,9 +11,9 @@
         <div class="title">
           <h3>最新发布</h3>
           <div class="more">
-            <a href="#">全部</a>
-            <a href="#">技术分享</a>
-            <a href="#">生活杂谈</a>
+            <a href="/">全部</a>
+            <%= link_to "技术分享", root_path(type:"technical") %>
+            <%= link_to "生活杂谈", root_path(type:"life") %>
           </div>
         </div>
         <% if @articles.blank?  %>
