@@ -93,6 +93,7 @@ a:hover {
     min-height: 500px;
     margin-bottom: 20px;
     float: left;
+    min-width: 800px;
 }
 
 @media (max-width:1000px) {

@@ -17,6 +17,7 @@ class AdminMagic::ArticlesController < AdminMagic::BaseController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
+    @article.create_time = Time.now.beginning_of_month
     tag_ids = params[:tag_ids]
     tags = Tag.where(id:tag_ids)
     if @article.save

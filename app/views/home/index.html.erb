@@ -11,27 +11,37 @@
         <div class="title">
           <h3>最新发布</h3>
           <div class="more">
-            <a href="#">技术</a>
+            <a href="#">全部</a>
+            <a href="#">技术分享</a>
             <a href="#">生活杂谈</a>
           </div>
         </div>
+        <% if @articles.blank?  %>
+          <div class="excerpt">
+            <%= image_tag("no_article.png",class: "img-responsive") %>
+          </div>
+        <% else %>
+          <% @articles.each do |art| %>
+          <div class="excerpt">
+            <header>
+              <a class="cat" href="#"><%=art.category.present? ? art.category.try(:name) : "暂无" %> <i></i></a>
+              <h2>
+                <%= link_to detail_home_path(id:art.id) do %>
+                  <%= art.try(:title) %>
+                <% end %>
+              </h2>
+            </header>
+            <p><%= art.try(:content) %></p>
+            <p class="meta">
+              <a class="time" href="#"><i class="glyphicon glyphicon-time"></i> <%= art.create_time.strftime("%Y-%m-%d") %></a>
+              <a class="views" href="#"><i class="glyphicon glyphicon-eye-open"></i> 0</a>
+              <a class="comment" href="#"><i class="glyphicon glyphicon-comment"></i> 0</a>
+            </p>
+          </div>
+          <% end %>
+        <% end %>
 
-<!--        <div class="excerpt">-->
-<!--          <header>-->
-<!--            <a class="cat" href="#">产品<i></i></a>-->
-<!--            <h2><a href="#">如何绘制产品架构图</a></h2>-->
-<!--          </header>-->
-<!--          <p>产品经理如何绘制产品架构图，这里有很多的学问，包括需求、业务流程等等。。产品经理如何绘制产品架构图，这里有很多的学问，包括需求、业务流程等等。。产品经理如何绘制产品架构图，这里有很多的学问，包括需求、业务流程等等。。产品经理如何绘制产品架构图，这里有很多的学问，包括需求、业务流程等等。。</p>-->
-<!--          <p class="meta">-->
-<!--            <a class="category" href="#"><i class="glyphicon glyphicon-folder-open"></i> 产品</a>-->
-<!--            <a class="time" href="#"><i class="glyphicon glyphicon-time"></i> 2018-3-20</a>-->
-<!--            <a class="views" href="#"><i class="glyphicon glyphicon-eye-open"></i> 88</a>-->
-<!--            <a class="comment" href="#"><i class="glyphicon glyphicon-comment"></i> 10</a>-->
-<!--          </p>-->
-<!--        </div>-->
-        <div class="excerpt">
-          <%= image_tag("no_article.png",class: "img-responsive") %>
-        </div>
+
 
 <!--        <nav aria-label="Page navigation">-->
 <!--          <ul class="pagination">-->
