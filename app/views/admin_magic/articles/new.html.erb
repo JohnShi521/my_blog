@@ -34,71 +34,66 @@
                   <div class="am-form-group">
                     <div class="am-g">
                       <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ipt-text-1">标题</label>
-                      <input class="am-u-md-8 form-control"  id="doc-ipt-text-1" placeholder="输入标题信息">
+                      <input class="am-u-md-11 form-control"  id="doc-ipt-text-1" placeholder="输入标题信息" required>
                     </div>
                   </div>
 
                   <div class="am-form-group">
                     <div class="am-g">
-                      <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ipt-email-1">电子邮箱</label>
-                      <input class="am-u-md-8 form-control"  id="doc-ipt-email-1" placeholder="输入电子邮件">
-                    </div>
-                  </div>
-
-                  <div class="am-form-group">
-                    <div class="am-g">
-                      <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ipt-pwd-1">密码</label>
-                      <input type="password" class="am-u-md-8"   id="doc-ipt-pwd-1" placeholder="设置个密码吧">
-                    </div>
-                  </div>
-
-                  <div class="am-form-group">
-                    <div class="am-g">
-                      <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ipt-phd-1">提示</label>
-                      <input class="am-u-md-8 form-control"  id="doc-ipt-phd-1" placeholder="提示信息">
-                    </div>
-                  </div>
-
-                  <div class="am-form-group">
-                    <div class="am-g">
-                      <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ta-1">文本域</label>
-                      <div class="" id="test-editormd">
-                <textarea style="display:none;">[TOC]
-
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-
-#### Editor.md directory
-
-    editor.md/
-            lib/
-            css/
-            scss/
-            tests/
-            fonts/
-            images/
-            plugins/
-            examples/
-            languages/
-            editormd.js
-            ...
-
-```html
-&lt;!-- English --&gt;
-&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
-
-&lt;!-- 繁體中文 --&gt;
-&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
-```
-</textarea>
+                      <label class="am-u-md-1 am-md-text-right" for="doc-select-2">类型</label>
+                      <div class="am-u-md-11 am-padding-0">
+                        <select multiple class="" id="doc-select-2" required>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                        </select>
                       </div>
                     </div>
                   </div>
+
+                  <div class="am-form-group">
+                    <div class="am-g">
+                      <label class="am-u-md-1 am-md-text-right" for="doc-select-1">分类</label>
+                      <select id="doc-select-1" required>
+                        <option value="option1">选项一...</option>
+                        <option value="option2">选项二.....</option>
+                        <option value="option3">选项三........</option>
+                      </select>
+                      <span class="am-form-caret"></span>
+                    </div>
+                  </div>
+
+                  <div class="am-form-group">
+                    <label class="am-u-md-1 am-md-text-right">标签：</label>
+                    <label class="am-checkbox-inline">
+                      <input type="checkbox" value="橘子" name="docVlCb" maxchecked="4" required> 橘子
+                    </label>
+                    <label class="am-checkbox-inline">
+                      <input type="checkbox" value="苹果" name="docVlCb"> 苹果
+                    </label>
+                    <label class="am-checkbox-inline">
+                      <input type="checkbox" value="菠萝" name="docVlCb"> 菠萝
+                    </label>
+                    <label class="am-checkbox-inline">
+                      <input type="checkbox" value="芒果" name="docVlCb"> 芒果
+                    </label>
+                    <label class="am-checkbox-inline">
+                      <input type="checkbox" value="香蕉" name="docVlCb"> 香蕉
+                    </label>
+                  </div>
+
+                  <div class="am-form-group">
+                    <div class="am-g">
+                      <label class="am-u-md-1 am-md-text-right am-padding-left-0" for="doc-ta-1">内容</label>
+                      <div class="" id="test-editormd">
+                          <textarea style="display:none;">*开始你的写作吧*</textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="am-btn am-btn-secondary" type="submit">提交</button>
+                  <button class="am-btn am-btn-default" type="button">取消</button>
                 </form>
               </div>
 

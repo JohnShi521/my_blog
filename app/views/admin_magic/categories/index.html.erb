@@ -28,7 +28,9 @@
           <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
               <div class="am-btn-group am-btn-group-xs">
-                <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+                <%=link_to new_admin_magic_category_path,class:"am-btn am-btn-default" do %>
+                <span class="am-icon-plus"></span> 新增
+                <% end %>
                 <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
               </div>
             </div>
@@ -60,20 +62,27 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td><input type="checkbox" /></td>
-                  <td>1</td>
-                  <td>分类</td>
-                  <td>这里是描述这里是描述这里是描述这里是描述</td>
-                  <td>
-                    <div class="am-btn-toolbar">
-                      <div class="am-btn-group am-btn-group-xs">
-                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                <% @categories.each do |cate| %>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td><%= cate.id %></td>
+                    <td><%= cate.try(:name) %></td>
+                    <td><%= cate.try(:desc) %></td>
+                    <td>
+                      <div class="am-btn-toolbar">
+                        <div class="am-btn-group am-btn-group-xs">
+                          <%= link_to edit_admin_magic_category_path(cate) do %>
+                            <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                          <% end %>
+                          <%= link_to admin_magic_category_path(cate),method: :DELETE do %>
+                            <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                          <% end %>
+
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
+                <% end %>
                 </tbody>
               </table>
               <div class="am-cf">

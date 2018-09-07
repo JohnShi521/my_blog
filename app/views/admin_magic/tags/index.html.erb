@@ -28,9 +28,9 @@
           <div class="am-u-sm-12 am-u-md-6">
             <div class="am-btn-toolbar">
               <div class="am-btn-group am-btn-group-xs">
-                <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
-                <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
-                <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
+                <%= link_to new_admin_magic_tag_path,class:"am-btn am-btn-default" do %>
+                  <span class="am-icon-plus"></span> 新增
+                <% end %>
                 <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
               </div>
             </div>
@@ -41,7 +41,7 @@
               <input type="text" class="am-form-field">
               <span class="am-input-group-btn">
 				            <button class="am-btn am-btn-default" type="button">搜索</button>
-				          </span>
+              </span>
             </div>
           </div>
         </div>
@@ -62,20 +62,27 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td><input type="checkbox" /></td>
-                  <td>1</td>
-                  <td>标签</td>
-                  <td>这里是描述这里是描述这里是描述这里是描述</td>
-                  <td>
-                    <div class="am-btn-toolbar">
-                      <div class="am-btn-group am-btn-group-xs">
-                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                <% @tags.each do |tag| %>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td><% tag.id %></td>
+                    <td><%= tag.try(:name) %></td>
+                    <td><%= tag.try(:desc) %></td>
+                    <td>
+                      <div class="am-btn-toolbar">
+                        <div class="am-btn-group am-btn-group-xs">
+                          <%= link_to edit_admin_magic_tag_path(tag),class:"" do %>
+                            <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                          <% end %>
+
+                          <%= link_to admin_magic_tag_path(tag), method: :DELETE do %>
+                          <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                          <% end %>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
+                <% end %>
                 </tbody>
               </table>
               <div class="am-cf">
