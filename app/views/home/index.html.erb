@@ -7,7 +7,7 @@
       <div class="page-header">
         <h4>记录学习的点点滴滴 <small>不积跬步无以至千里</small></h4>
       </div>
-      <div class="content col-xs-12">
+      <div class="content col-xs-12" style="margin-left: -15px;">
         <div class="title">
           <h3>最新发布</h3>
           <div class="more">
@@ -33,7 +33,7 @@
             </header>
             <p><%= art.try(:short_content) %></p>
             <p class="meta">
-              <a class="time" href="#"><i class="glyphicon glyphicon-time"></i> <%= art.create_time.strftime("%Y-%m-%d") %></a>
+              <a class="time" href="#"><i class="glyphicon glyphicon-time"></i> <%= art.created_at.strftime("%Y-%m-%d") %></a>
               <a class="views" href="#"><i class="glyphicon glyphicon-eye-open"></i> <%= art.try(:view_records_count) %></a>
               <a class="comment" href="#"><i class="glyphicon glyphicon-comment"></i> 0</a>
             </p>

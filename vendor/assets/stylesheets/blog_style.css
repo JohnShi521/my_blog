@@ -93,7 +93,7 @@ a:hover {
     /*min-height: 500px;*/
     /*margin-bottom: 20px;*/
     float: left;
-    /*min-width: 800px;*/
+    min-width: 100%;
     /*margin-left: -15px;*/
 }
 
