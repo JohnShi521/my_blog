@@ -15,7 +15,9 @@ class HomeController < ApplicationController
   end
 
   def detail
+    real_ip =  real_ip(request)
     @article = Article.find_by_id(params[:id])
+    @article.view_records.find_or_create_by(create_time:Time.now.beginning_of_day,real_ip:real_ip)
   end
 
   private

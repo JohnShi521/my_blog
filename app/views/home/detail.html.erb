@@ -21,7 +21,7 @@
               <% else %>
               <% end %>
             </span>
-            <span class="item views"><i class="glyphicon glyphicon-eye-open"></i> 0</span>
+            <span class="item views"><i class="glyphicon glyphicon-eye-open"></i> <%= @article.try(:view_records_count) %></span>
           </div>
           <p id="article_md" style="display: none"><%= @article.try(:content).html_safe %></p>
         </header>

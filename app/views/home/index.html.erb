@@ -34,7 +34,7 @@
             <p><%= art.try(:short_content) %></p>
             <p class="meta">
               <a class="time" href="#"><i class="glyphicon glyphicon-time"></i> <%= art.create_time.strftime("%Y-%m-%d") %></a>
-              <a class="views" href="#"><i class="glyphicon glyphicon-eye-open"></i> 0</a>
+              <a class="views" href="#"><i class="glyphicon glyphicon-eye-open"></i> <%= art.try(:view_records_count) %></a>
               <a class="comment" href="#"><i class="glyphicon glyphicon-comment"></i> 0</a>
             </p>
           </div>
