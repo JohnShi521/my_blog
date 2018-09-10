@@ -1,25 +1,56 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Place read me!
 
-Things you may want to cover:
+> My_blog
 
-* Ruby version
 
-* System dependencies
+## 初始化
 
-* Configuration
+`$ git clone 项目地址` 
 
-* Database creation
+`$ cd my_blog`
 
-* Database initialization
+`$ gem install bundler`
 
-* How to run the test suite
+`$ bundle`
 
-* Services (job queues, cache servers, search engines, etc.)
+`$ cp config/application.yml.example config/application.yml`
 
-* Deployment instructions
+`$ vim application.yml (填写配置信息)`
 
-* ...
+
+
+## 数据库操作
+
+  > 首次
+  
+  `rake db:create`
+  
+  `rake db:migrate`
+  
+  `rake db:seed`
+
+   > 其他
+   
+   `rake db:migrate`
+  
+## 启动项目
+
+### Server Run Development
+
+`$ vim config/puma/development.config.rb （修改端口号，如果不需要修改则不用修改）`
+
+`$ sh shell_script/start.development.puma.sh`
+
+`$ sh shell_script/restart.development.puma.sh (重启项目)`
+
+
+### Server Run Production
+
+`$ vim config/puma/production.config.rb （修改端口号，如果不需要修改则不用修改）`
+
+`$ sh shell_script/start.production.puma.sh`
+
+`$ sh shell_script/restart.production.puma.sh (重启项目)`
 
