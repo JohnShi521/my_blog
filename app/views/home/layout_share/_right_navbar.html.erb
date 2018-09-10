@@ -27,7 +27,11 @@
     <h3>文章分类</h3>
     <ul>
       <% @categories.each do |cate| %>
-        <li><a href="#"><span class="text"> <%=cate.try(:name) %></span><span class="count" style="margin-left: 150px"><%= cate.articles.is_show_home.size %>篇</span></a></li>
+        <li>
+          <%= link_to root_path(category_id:cate.id) do %>
+            <span class="text"> <%=cate.try(:name) %></span><span class="count" style="margin-left: 150px"><%= cate.articles.is_show_home.size %>篇</span>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
@@ -35,7 +39,11 @@
     <h3>归档</h3>
     <ul>
       <% @time_file.each do |k,v| %>
-        <li><a href="#"><span class="text"> <%= k.strftime("%Y年%m月") %></span><span class="count" style="margin-left: 150px"><%= v.size %>篇</span></a></li>
+        <li>
+          <%= link_to root_path(create_time:k.strftime("%Y-%m-%d")) do %>
+            <span class="text"> <%= k.strftime("%Y年%m月") %></span><span class="count" style="margin-left: 150px"><%= v.size %>篇</span>
+          <% end %>
+        </li>
       <% end %>
 
     </ul>
@@ -44,7 +52,11 @@
     <h3>标签云</h3>
     <ul>
       <% @tags.each do |tag| %>
-        <li><a href="#"><%= tag.try(:name) %> <span class="badge"><%= tag.articles.is_show_home.size %></span></a></li>
+        <li>
+          <%= link_to root_path(tag_id:tag.id) do %>
+            <%= tag.try(:name) %> <span class="badge"><%= tag.articles.is_show_home.size %></span>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>

@@ -11,17 +11,28 @@
         <header class="article-header">
           <h1 class="article-title"><a href="#"><%= @article.try(:title) %></a></h1>
           <div class="article-meta ">
-            <span class="item category"><a href="# "><%=@article.category.present? ? @article.category.try(:name) : "暂无" %></a></span>
-            <span class="item time "><%= @article.create_time.strftime("%Y-%m-%d") %></span>
+            <span class="item tags">来源：
+              <%= @article.source_type == "origin" ? "原创" : "转载" %>
+            </span>
+            <span class="item category">分类: &nbsp
+              <%= link_to root_path(category_id:@article.category_id) do %>
+                 <%=@article.category.present? ? @article.category.try(:name) : "暂无" %>
+              <% end %>
+            </span>
             <span class="item tags">标签：
               <% unless @article.tags.blank? %>
                 <% @article.tags.each do |tag| %>
-                  <a href="#"><%= tag.name %></a>
+                  <%= link_to root_path(tag_id:tag.id) do %>
+                    <%= tag.name %>
+                  <% end %>
                 <% end %>
               <% else %>
+                暂无标签
               <% end %>
             </span>
+            <span class="item time "><i class="glyphicon glyphicon-time"></i> <%= @article.create_time.strftime("%Y-%m-%d") %></span>
             <span class="item views"><i class="glyphicon glyphicon-eye-open"></i> <%= @article.try(:view_records_count) %></span>
+            <span class="item comment"><i class="glyphicon glyphicon-comment"></i> 0</span>
           </div>
           <p id="article_md" style="display: none"><%= @article.try(:content).html_safe %></p>
         </header>

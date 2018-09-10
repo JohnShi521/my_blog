@@ -11,9 +11,9 @@
         <div class="title">
           <h3>最新发布</h3>
           <div class="more">
-            <a href="/">全部</a>
-            <%= link_to "技术分享", root_path(type:"technical") %>
-            <%= link_to "生活杂谈", root_path(type:"life") %>
+            <%= link_to "全部", root_path(category_id:params[:category_id],tag_id:params[:tag_id],create_time:params[:create_time]) %>
+            <%= link_to "技术分享", root_path(category_id:params[:category_id],tag_id:params[:tag_id],create_time:params[:create_time],type:"technical") %>
+            <%= link_to "生活杂谈", root_path(category_id:params[:category_id],tag_id:params[:tag_id],create_time:params[:create_time],type:"life") %>
           </div>
         </div>
         <% if @articles.blank?  %>
@@ -24,7 +24,11 @@
           <% @articles.each do |art| %>
           <div class="excerpt">
             <header>
-              <a class="cat" href="#"><%=art.category.present? ? art.category.try(:name) : "暂无" %> <i></i></a>
+              <%= link_to root_path(category_id:art.category_id),class:"cat" do %>
+<!--              <a class="cat" href="#">-->
+                <%=art.category.present? ? art.category.try(:name) : "暂无" %> <i></i>
+<!--              </a>-->
+              <% end %>
               <h2>
                 <%= link_to detail_home_path(id:art.id) do %>
                   <%= art.try(:title) %>
