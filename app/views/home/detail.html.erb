@@ -12,7 +12,7 @@
           <h1 class="article-title"><a href="#"><%= @article.try(:title) %></a></h1>
           <div class="article-meta ">
             <span class="item tags">来源：
-              <%= @article.source_type == "origin" ? "原创" : "转载" %>
+              <%= @article.source_type == "original" ? "原创" : "转载" %>
             </span>
             <span class="item category">分类: &nbsp
               <%= link_to root_path(category_id:@article.category_id) do %>
