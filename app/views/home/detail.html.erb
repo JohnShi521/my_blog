@@ -30,7 +30,7 @@
                 暂无标签
               <% end %>
             </span>
-            <span class="item time "><i class="glyphicon glyphicon-time"></i> <%= @article.create_time.strftime("%Y-%m-%d") %></span>
+            <span class="item time "><i class="glyphicon glyphicon-time"></i> <%= @article.created_at.strftime("%Y-%m-%d") %></span>
             <span class="item views"><i class="glyphicon glyphicon-eye-open"></i> <%= @article.try(:view_records_count) %></span>
             <span class="item comment"><i class="glyphicon glyphicon-comment"></i> 0</span>
           </div>
